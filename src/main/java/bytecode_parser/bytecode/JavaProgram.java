@@ -1,6 +1,6 @@
-package byte_code_parser.bytecode;
+package bytecode_parser.bytecode;
 
-import byte_code_parser.bytecode.classfile.ClassFileComponent;
+import bytecode_parser.bytecode.classfile.ClassFileComponent;
 
 import java.util.EnumMap;
 

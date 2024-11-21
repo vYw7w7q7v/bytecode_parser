@@ -1,36 +1,21 @@
-package byte_code_parser.parser;
+package bytecode_parser.parser;
 
-import byte_code_parser.bytecode.*;
-import byte_code_parser.bytecode.classfile.ClassFileComponent;
-import byte_code_parser.bytes.ByteBuffer;
+import bytecode_parser.bytecode.*;
+import bytecode_parser.bytecode.classfile.ClassFileComponent;
+import bytecode_parser.bytes.ByteBuffer;
 
 import java.io.*;
 
-import static byte_code_parser.bytecode.classfile.ClassFileComponent.*;
-import static byte_code_parser.bytes.ByteUtils.readBytesFromFile;
+import static bytecode_parser.bytecode.classfile.ClassFileComponent.*;
+import static bytecode_parser.bytes.ByteUtils.readBytesFromFile;
 
 
 public class BytecodeParser {
     public static JavaProgram parseJavaBytecode(File file) {
-
         ByteBuffer byteBuffer = readBytesFromFile(file);
         var javaProgram = JavaProgram.of();
-
         parseClassFileComponents(javaProgram, byteBuffer);
-
-        //components.add(new SimpleBytecodeComponent(parse_u4(), "magic_bytes"));
-        //components.add(new NumericBytecodeComponent(parse_u2(), "minor_version"));
-        //components.add(new NumericBytecodeComponent(parse_u2(), "major_version"));
-
-        //var constantPoolCount = new NumericBytecodeComponent(parse_u2(), "constant_pool_count");
-        //components.add(constantPoolCount);
-
-        //BytecodeComponent constantPool = parseConstantPool(constantPoolCount.asNumber());
-        //System.out.println(constantPool);
-
-        //JavaBytecode res = JavaBytecode.builder().components(components).build();
         System.out.println(javaProgram);
-
         return javaProgram;
     }
 

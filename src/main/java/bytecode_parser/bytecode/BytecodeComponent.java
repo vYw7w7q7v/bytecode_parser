@@ -1,4 +1,4 @@
-package byte_code_parser.bytecode;
+package bytecode_parser.bytecode;
 
 public interface BytecodeComponent {
 }

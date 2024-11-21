@@ -1,6 +1,6 @@
-package byte_code_parser.bytecode;
+package bytecode_parser.bytecode;
 
-import byte_code_parser.bytes.ByteUtils;
+import bytecode_parser.bytes.ByteUtils;
 
 import static java.text.MessageFormat.format;
 

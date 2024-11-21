@@ -1,10 +1,10 @@
-package byte_code_parser.bytecode.classfile;
+package bytecode_parser.bytecode.classfile;
 
 
-import byte_code_parser.bytecode.BytecodeComponentType;
-import byte_code_parser.bytecode.BytecodeEntity;
+import bytecode_parser.bytecode.BytecodeComponentType;
+import bytecode_parser.bytecode.BytecodeEntity;
 
-import static byte_code_parser.bytecode.BytecodeEntity.*;
+import static bytecode_parser.bytecode.BytecodeEntity.*;
 
 public enum ClassFileComponent implements BytecodeComponentType {
     magic(U4), // CAFE BABE

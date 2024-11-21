@@ -1,4 +1,4 @@
-package byte_code_parser.bytecode.classfile.constant_pool;
+package bytecode_parser.bytecode.classfile.constant_pool;
 public enum ConstantType {
     CONSTANT_UTF8_INFO(1),
     CONSTANT_INTEGER_INFO(3),

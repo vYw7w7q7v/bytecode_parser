@@ -1,9 +1,7 @@
-package byte_code_parser.bytecode;
+package bytecode_parser.bytecode;
 
 
-import lombok.Getter;
-
-import static byte_code_parser.bytes.ByteUtils.bytesAsString;
+import static bytecode_parser.bytes.ByteUtils.bytesAsString;
 import static java.text.MessageFormat.format;
 
 public sealed class SimpleBytecodeComponent implements BytecodeComponent

@@ -1,4 +1,4 @@
-package byte_code_parser.bytes;
+package bytecode_parser.bytes;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,6 +1,6 @@
-package org.example;
+package bytecode_parser;
 
-import byte_code_parser.parser.BytecodeParser;
+import bytecode_parser.parser.BytecodeParser;
 
 import java.nio.file.Path;
 

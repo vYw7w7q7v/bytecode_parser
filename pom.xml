@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>byte_code_parser</name>
+  <name>bytecode_parser</name>
   <url>http://maven.apache.org</url>
 
   <properties>

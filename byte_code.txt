@@ -1,5 +1,5 @@
 public class Main {
-Classfile /C:/java_pr2/byte_code_parser/src/main/java/Main.class
+Classfile /C:/java_pr2/bytecode_parser/src/main/java/Main.class
   Last modified 5 нояб. 2024?г.; size 414 bytes
   SHA-256 checksum 6441929c962b1a67c277c6b0bebf499c094830691b96a3f143432ca6bec08e81
   Compiled from "Main.java"
