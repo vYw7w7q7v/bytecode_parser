@@ -1,11 +1,12 @@
-package bytecode_parser.bytecode;
+package bytecode_parser.bytecode.component;
 
+import bytecode_parser.bytecode.component.type.DefinedBytecodeComponentType;
 import bytecode_parser.bytes.ByteUtils;
 
 import static java.text.MessageFormat.format;
 
 public final class NumericBytecodeComponent extends SimpleBytecodeComponent {
-    public NumericBytecodeComponent(byte[] bytes, BytecodeComponentType componentType) {
+    public NumericBytecodeComponent(byte[] bytes, DefinedBytecodeComponentType componentType) {
         super(bytes, componentType);
     }
 

@@ -1,17 +1,19 @@
-package bytecode_parser.bytecode;
+package bytecode_parser.bytecode.component;
 
+
+import bytecode_parser.bytecode.component.type.DefinedBytecodeComponentType;
 
 import static bytecode_parser.bytes.ByteUtils.bytesAsString;
 import static java.text.MessageFormat.format;
 
-public sealed class SimpleBytecodeComponent implements BytecodeComponent
+public sealed class SimpleBytecodeComponent extends BytecodeComponent
         permits NumericBytecodeComponent {
-    protected final byte[] bytes;
-    protected final BytecodeComponentType componentType;
 
-    public SimpleBytecodeComponent(byte[] bytes, BytecodeComponentType componentType) {
+    protected final byte[] bytes;
+
+    public SimpleBytecodeComponent(byte[] bytes, DefinedBytecodeComponentType componentType) {
+        super(componentType);
         this.bytes = bytes;
-        this.componentType = componentType;
     }
 
     public String hexFormat() {
