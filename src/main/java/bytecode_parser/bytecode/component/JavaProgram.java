@@ -1,11 +1,11 @@
 package bytecode_parser.bytecode.component;
 
-import bytecode_parser.bytecode.component.type.DefinedBytecodeComponentType;
+import bytecode_parser.bytecode.instruction.type.ComplexBytecodeInstructionType;
 
 public final class JavaProgram extends CompositeBytecodeComponent {
 
     public JavaProgram() {
-        super(DefinedBytecodeComponentType.JAVA_PROGRAM);
+        super(ComplexBytecodeInstructionType.JAVA_PROGRAM);
     }
 
     @Override

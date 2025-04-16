@@ -1,12 +1,12 @@
 package bytecode_parser.bytecode.component;
 
-import bytecode_parser.bytecode.component.type.DefinedBytecodeComponentType;
+import bytecode_parser.bytecode.instruction.type.BytecodeInstructionType;
 
 public abstract sealed class BytecodeComponent
-        permits CompositeBytecodeComponent, ListBytecodeComponent, SimpleBytecodeComponent {
-    protected final DefinedBytecodeComponentType componentType;
-
-    public BytecodeComponent(DefinedBytecodeComponentType componentType) {
+        permits CompositeBytecodeComponent, FinalBytecodeComponent,
+        ArrayBytecodeComponent, SingleBytecodeComponent {
+    public final BytecodeInstructionType componentType;
+    public BytecodeComponent(BytecodeInstructionType componentType) {
         this.componentType = componentType;
     }
 

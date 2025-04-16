@@ -1,36 +1,35 @@
 package bytecode_parser.bytecode.component;
 
-import bytecode_parser.bytecode.component.type.DefinedBytecodeComponentType;
+import bytecode_parser.bytecode.instruction.type.BytecodeInstructionType;
+import lombok.Getter;
 
 import java.text.MessageFormat;
-import java.util.EnumMap;
+import java.util.*;
 
 public sealed class CompositeBytecodeComponent extends BytecodeComponent permits JavaProgram {
-    protected final EnumMap<DefinedBytecodeComponentType, BytecodeComponent> components = new EnumMap<>(DefinedBytecodeComponentType.class);
 
-    public void put(DefinedBytecodeComponentType key, BytecodeComponent value) {
-        components.put(key, value);
+    @Getter
+    protected final SequencedMap<BytecodeInstructionType, BytecodeComponent> components = new LinkedHashMap<>();
+
+    public void put(BytecodeComponent value) {
+        components.put(value.componentType, value);
     }
 
-    public CompositeBytecodeComponent(DefinedBytecodeComponentType componentType) {
+    public CompositeBytecodeComponent(BytecodeInstructionType componentType) {
         super(componentType);
     }
 
-    public Object get(DefinedBytecodeComponentType bytecodeComponentType) {
-        return components.get(bytecodeComponentType);
+    public Object get(BytecodeInstructionType compositeBytecodeBytecodeInstructionType) {
+        return components.get(compositeBytecodeBytecodeInstructionType);
     }
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(MessageFormat.format("""
-                <{0}>[
-                """, componentType));
+        StringBuilder builder = new StringBuilder(MessageFormat.format("{0}:\n", componentType));
         for (BytecodeComponent component : components.values()) {
-            builder.append(component).append("\n");
+            builder.append("##").append(component).append("\n");
         }
-        builder.append("] =====");
         return builder.toString();
     }
-
 
 }
