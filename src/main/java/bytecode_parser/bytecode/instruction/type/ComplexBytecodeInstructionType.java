@@ -21,7 +21,8 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
     constant_pool_count(NUMERIC_INFO, U2),
     TAG(NUMERIC_INFO, U1),
     CONSTANT_POOL_INFO(
-            switchAttribute -> CPConstantBytecodeInstructionType.get(switchAttribute.asNumber()).instruction(),
+            switchAttribute ->
+                    CPConstantBytecodeInstructionType.get(switchAttribute.asNumber()).instruction(),
             TAG
     ),
 
@@ -29,13 +30,18 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
     constant_pool(
             CONSTANT_POOL_INFO,
             // !!!! actual length == constant_pool_count-1 !!!!
-            context -> ((SingleBytecodeComponent) context.get(constant_pool_count)).asNumber() - 1
+            context ->
+                    ((SingleBytecodeComponent) context.get(constant_pool_count)).asNumber() - 1
     ),
     access_flags(U2),
     this_class(U2),
     super_class(U2),
     interfaces_count(NUMERIC_INFO, U2),
-    //INTERFACE_INFO(),
+    INTERFACE_INFO(
+            switchAttribute ->
+                    CPConstantBytecodeInstructionType.get(switchAttribute.asNumber()).instruction(),
+            TAG
+    ),
     //interfaces(), // interfaces[interfaces_count]
     fields_count(U2),
     //FIELD_INFO(),
@@ -49,24 +55,25 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
 
     //// CONSTANT POOL
 
-    name_index(U2),
-    class_index(U2),
-    name_and_type_index(U2),
-    string_index(U2),
+    name_index(NUMERIC_INFO, U2),
+    class_index(NUMERIC_INFO, U2),
+    name_and_type_index(NUMERIC_INFO, U2),
+    string_index(NUMERIC_INFO, U2),
     bytes(U4),
     high_bytes(U4),
     low_bytes(U4),
-    descriptor_index(U2),
-    length_of_byte_sequence(U2),
-    byte_sequence(U1, context -> ((SingleBytecodeComponent) context.get(length_of_byte_sequence)).asNumber()),
+    descriptor_index(NUMERIC_INFO, U2),
+    length_of_byte_sequence(NUMERIC_INFO, U2),
+    byte_sequence(UTF8_INFO, U1,
+            context -> ((SingleBytecodeComponent) context.get(length_of_byte_sequence)).asNumber()),
     byte_element(U1),
     reference_kind(U1),
-    reference_index(U2),
+    reference_index(NUMERIC_INFO, U2),
     bootstrap_method_attr_index(U2),
 
     // MAIN
 
-    JAVA_PROGRAM(
+    JAVA_PROGRAM( // (ClassFile)
             magic, // CAFE BABE
             minor_version,
             major_version,
@@ -108,9 +115,19 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
         this.byteInfoType = byteInfoType;
     }
 
+
+    // array instruction
     ComplexBytecodeInstructionType(BytecodeInstructionType arrayMemberInstructionType,
                                    Function<CompositeBytecodeComponent, Integer> lengthAttributeFunction) {
-        this.instruction = new ArrayInstruction(arrayMemberInstructionType, lengthAttributeFunction);
+        this.instruction = new ArrayInstruction(this, arrayMemberInstructionType, lengthAttributeFunction);
+    }
+
+    // array instruction with byteInfoType
+    ComplexBytecodeInstructionType(ByteInfoType byteInfoType,
+                                   BytecodeInstructionType arrayMemberInstructionType,
+                                   Function<CompositeBytecodeComponent, Integer> lengthAttributeFunction) {
+        this(arrayMemberInstructionType, lengthAttributeFunction);
+        this.byteInfoType = byteInfoType;
     }
 
     ComplexBytecodeInstructionType(Function<SingleBytecodeComponent, BytecodeInstruction> switchAttributeFunction,

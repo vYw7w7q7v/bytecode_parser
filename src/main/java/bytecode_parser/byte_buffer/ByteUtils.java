@@ -25,6 +25,10 @@ public class ByteUtils {
         return emptyDelimiterHexFormat.formatHex(bytes).toUpperCase(Locale.ROOT);
     }
 
+    public static char bytesAsUTF8Char(byte[] bytes) {
+        return (char) asNumber(bytesAsString(bytes));
+    }
+
     public static int asNumber(String byteString) {
         return HexFormat.fromHexDigits(byteString);
     }

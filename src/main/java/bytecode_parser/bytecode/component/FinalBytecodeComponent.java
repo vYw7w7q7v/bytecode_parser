@@ -5,6 +5,7 @@ import bytecode_parser.bytecode.instruction.type.BytecodeInstructionType;
 import bytecode_parser.byte_buffer.ByteUtils;
 
 import static bytecode_parser.byte_buffer.ByteUtils.bytesAsString;
+import static bytecode_parser.byte_buffer.ByteUtils.bytesAsUTF8Char;
 
 public final class FinalBytecodeComponent extends BytecodeComponent {
 
@@ -21,6 +22,10 @@ public final class FinalBytecodeComponent extends BytecodeComponent {
 
     public String hexFormat() {
         return bytesAsString(bytes);
+    }
+
+    public String utf8() {
+        return bytesAsUTF8Char(bytes) + "";
     }
 
     @Override

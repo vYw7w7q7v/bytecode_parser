@@ -76,7 +76,9 @@ public class BytecodeParser {
 
         var arr = new ArrayBytecodeComponent(arrayInstruction.instructionType);
         for (int i = 0; i < length; i++)
-            arr.add(parseInstruction(buf, arrayInstruction.instructionType.instruction(), null));
+            arr.add(parseInstruction(buf,
+                    arrayInstruction.getArrayMemberInstructionType().instruction(),
+                    null));
         return arr;
     }
 
