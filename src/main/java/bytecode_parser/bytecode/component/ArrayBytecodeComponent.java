@@ -8,6 +8,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static bytecode_parser.utils.StringUtils.addPrefixForEachLine;
+
 public final class ArrayBytecodeComponent extends BytecodeComponent {
     public ArrayBytecodeComponent(BytecodeInstructionType instructionType) {
         super(instructionType);
@@ -26,17 +28,14 @@ public final class ArrayBytecodeComponent extends BytecodeComponent {
                 componentType,
                 components.size())
         );
-
-//        if (componentType instanceof FinalBytecodeInstructionType) {
-//            builder.append("  ");
-//            for (BytecodeComponent component : components) {
-//                builder.append(component);
-//            }
-//        }
-
-        for (BytecodeComponent component : components) {
-            builder.append("##").append(component).append("\n");
+        for (int i = 0; i < components.size(); i++) {
+            builder.append(addPrefixForEachLine(MessageFormat.format(
+                    "<{0}> {1}", i, components.get(i).toString()
+            ), "-")).append("\n");
         }
+//        for (BytecodeComponent component : components) {
+//            builder.append(addPrefixForEachLine(component.toString(), "-")).append("\n");
+//        }
         return builder.toString();
     }
 }

@@ -8,6 +8,7 @@ import bytecode_parser.bytecode.instruction.*;
 import java.util.Arrays;
 import java.util.function.Function;
 
+import static bytecode_parser.bytecode.instruction.type.ByteInfoType.*;
 import static bytecode_parser.bytecode.instruction.type.FinalBytecodeInstructionType.*;
 
 // Class file component type
@@ -15,10 +16,10 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
 
     //// CLASS FILE
     magic(U4), // CAFE BABE
-    minor_version(true, U2),
-    major_version(true, U2),
-    constant_pool_count(true, U2),
-    TAG(true, U1),
+    minor_version(NUMERIC_INFO, U2),
+    major_version(NUMERIC_INFO, U2),
+    constant_pool_count(NUMERIC_INFO, U2),
+    TAG(NUMERIC_INFO, U1),
     CONSTANT_POOL_INFO(
             switchAttribute -> CPConstantBytecodeInstructionType.get(switchAttribute.asNumber()).instruction(),
             TAG
@@ -33,7 +34,7 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
     access_flags(U2),
     this_class(U2),
     super_class(U2),
-    interfaces_count(true, U2),
+    interfaces_count(NUMERIC_INFO, U2),
     //INTERFACE_INFO(),
     //interfaces(), // interfaces[interfaces_count]
     fields_count(U2),
@@ -85,7 +86,7 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
     );
 
     public final BytecodeInstruction instruction;
-    private boolean numericFlag = false;
+    private ByteInfoType byteInfoType = BYTE_INFO;
 
     ComplexBytecodeInstructionType(BytecodeInstructionType... instructionTypes) {
         if (instructionTypes.length < 1) {
@@ -102,9 +103,9 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
         }
     }
 
-    ComplexBytecodeInstructionType(boolean numericFlag, BytecodeInstructionType... instructionTypes) {
+    ComplexBytecodeInstructionType(ByteInfoType byteInfoType, BytecodeInstructionType... instructionTypes) {
         this(instructionTypes);
-        this.numericFlag = numericFlag;
+        this.byteInfoType = byteInfoType;
     }
 
     ComplexBytecodeInstructionType(BytecodeInstructionType arrayMemberInstructionType,
@@ -127,8 +128,8 @@ public enum ComplexBytecodeInstructionType implements BytecodeInstructionType {
     }
 
     @Override
-    public boolean isNumeric() {
-        return numericFlag;
+    public ByteInfoType byteInfoType() {
+        return byteInfoType;
     }
 
 

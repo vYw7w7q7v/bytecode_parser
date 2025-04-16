@@ -3,12 +3,12 @@ package bytecode_parser.parser;
 import bytecode_parser.bytecode.instruction.*;
 import bytecode_parser.bytecode.component.*;
 import bytecode_parser.bytecode.instruction.type.ComplexBytecodeInstructionType;
-import bytecode_parser.bytes.ByteBuffer;
+import bytecode_parser.byte_buffer.ByteBuffer;
 
 import java.io.*;
 
 import static bytecode_parser.bytecode.instruction.type.FinalBytecodeInstructionType.*;
-import static bytecode_parser.bytes.ByteUtils.readBytesFromFile;
+import static bytecode_parser.byte_buffer.ByteUtils.readBytesFromFile;
 
 
 public class BytecodeParser {

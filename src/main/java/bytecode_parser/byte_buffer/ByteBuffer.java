@@ -1,4 +1,4 @@
-package bytecode_parser.bytes;
+package bytecode_parser.byte_buffer;
 
 import java.util.*;
 

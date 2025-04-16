@@ -5,6 +5,9 @@ import lombok.Getter;
 
 import java.text.MessageFormat;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static bytecode_parser.utils.StringUtils.addPrefixForEachLine;
 
 public sealed class CompositeBytecodeComponent extends BytecodeComponent permits JavaProgram {
 
@@ -27,7 +30,7 @@ public sealed class CompositeBytecodeComponent extends BytecodeComponent permits
     public String toString() {
         StringBuilder builder = new StringBuilder(MessageFormat.format("{0}:\n", componentType));
         for (BytecodeComponent component : components.values()) {
-            builder.append("##").append(component).append("\n");
+            builder.append(addPrefixForEachLine(component.toString(), "-")).append("\n");
         }
         return builder.toString();
     }

@@ -17,4 +17,11 @@ public enum FinalBytecodeInstructionType implements BytecodeInstructionType {
     public BytecodeInstruction instruction() {
         return instruction;
     }
+
+    @Override
+    public ByteInfoType byteInfoType() {
+        return ByteInfoType.BYTE_INFO;
+    }
+
+
 }

@@ -8,7 +8,7 @@ public sealed interface BytecodeInstructionType permits ComplexBytecodeInstructi
     //String instructionName();
     BytecodeInstruction instruction();
 
-    default boolean isNumeric() {
-        return false;
+    default ByteInfoType byteInfoType() {
+        return ByteInfoType.UNDEFINED_INFO;
     }
 }

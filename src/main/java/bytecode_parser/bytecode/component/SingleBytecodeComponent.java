@@ -1,5 +1,6 @@
 package bytecode_parser.bytecode.component;
 
+import bytecode_parser.bytecode.instruction.type.ByteInfoType;
 import bytecode_parser.bytecode.instruction.type.BytecodeInstructionType;
 
 import java.text.MessageFormat;
@@ -30,6 +31,6 @@ public final class SingleBytecodeComponent extends BytecodeComponent {
                            {1}
                        """,
                 componentType,
-                componentType.isNumeric() ? asNumber() : component);
+                componentType.byteInfoType() == ByteInfoType.NUMERIC_INFO ? asNumber() : component);
     }
 }

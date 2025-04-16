@@ -2,10 +2,9 @@ package bytecode_parser.bytecode.component;
 
 
 import bytecode_parser.bytecode.instruction.type.BytecodeInstructionType;
-import bytecode_parser.bytes.ByteUtils;
+import bytecode_parser.byte_buffer.ByteUtils;
 
-import static bytecode_parser.bytes.ByteUtils.bytesAsString;
-import static java.text.MessageFormat.format;
+import static bytecode_parser.byte_buffer.ByteUtils.bytesAsString;
 
 public final class FinalBytecodeComponent extends BytecodeComponent {
 
